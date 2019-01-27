@@ -22,7 +22,6 @@ public class DemoController {
         Map<Object, Object> map = new HashMap<>();
         map.put("aa", "11");
         map.put("bb", "22");
-        // 
         return map;
     }
 
