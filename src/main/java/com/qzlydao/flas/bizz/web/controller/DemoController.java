@@ -1,5 +1,6 @@
 package com.qzlydao.flas.bizz.web.controller;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,6 +14,7 @@ import java.util.Map;
  * User: liuqiang
  * Date: 2019-01-26 17:46
  */
+@Slf4j
 @RestController
 public class DemoController {
 

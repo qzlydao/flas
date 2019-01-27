@@ -32,5 +32,15 @@ dependencies {
 
     // pagehelper
     compile 'com.github.pagehelper:pagehelper:4.1.4'
+
+    // lombok
+    compile 'org.projectlombok:lombok:1.16.18'
+
+    // redis
+    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+
+    // fastjson
+    compile 'com.alibaba:fastjson:1.2.47'
+
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
