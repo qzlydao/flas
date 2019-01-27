@@ -1,0 +1,19 @@
+spring:
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/flas
+    username: root
+    password: 518518
+  redis:
+    database: 0
+    host:
+    password:
+    jedis:
+      pool:
+        max-active: 8
+        max-wait: 500
+        max-idle: 8
+        min-idle: 1
+
+
+
+
