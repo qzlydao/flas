@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.ExecutorService;
 
 /**
@@ -22,18 +23,20 @@ public class DemoServiceImpl implements DemoService {
     @Autowired RedisService    redisService;
 
     @Override
-    public Map<String, Object> threadDemo(String input) {
-        Map<String, Object> resp = null;
-        executorService.execute(new Runnable() {
-            @Override
-            public void run() {
-                redisService.set(input, input);
-            }
-        });
-        Object value = redisService.get(input);
-        if (value != null) {
-            resp = new HashMap<>();
-            resp.put(input, input);
+    public Map<String, Object> threadDemo(Map<String, Object> input) {
+        final Map<String, Object> resp = new HashMap<>();
+        Set<Map.Entry<String, Object>> entries = input.entrySet();
+        for (Map.Entry<String, Object> entry : entries) {
+            String key = entry.getKey();
+            Object value = entry.getValue();
+            executorService.execute(new Runnable() {
+                @Override
+                public void run() {
+                    System.out.println(Thread.currentThread().getName() + "---" + key);
+                    resp.put(key, value);
+                }
+            });
+
         }
         return resp;
     }

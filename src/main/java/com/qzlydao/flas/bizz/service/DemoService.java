@@ -10,5 +10,5 @@ public interface DemoService {
      * @param input
      * @return
      */
-    Map<String, Object> threadDemo(String input);
+    Map<String, Object> threadDemo(Map<String, Object> input);
 }

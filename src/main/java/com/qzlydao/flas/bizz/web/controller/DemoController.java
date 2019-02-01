@@ -1,14 +1,15 @@
 package com.qzlydao.flas.bizz.web.controller;
 
 import com.qzlydao.flas.bizz.dao.MatchDao;
+import com.qzlydao.flas.bizz.dto.ReqParam;
+import com.qzlydao.flas.bizz.service.DemoService;
 import com.qzlydao.flas.commom.redis.RedisService;
+import com.qzlydao.flas.utils.BeanUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -23,6 +24,10 @@ import java.util.Set;
 @RestController
 public class DemoController {
 
+    @Autowired         DemoService  demoService;
+    @Autowired private MatchDao     matchDao;
+    @Autowired private RedisService redisService;
+
     @PostMapping("/demo")
     public Object demo(@RequestBody Map<String, Object> param) {
         System.out.println("-------------");
@@ -32,8 +37,6 @@ public class DemoController {
         return map;
     }
 
-    @Autowired private MatchDao matchDao;
-
     @GetMapping("/getCount")
     public Map<String, Object> getCount() {
         int i = matchDao.queryCount();
@@ -41,8 +44,6 @@ public class DemoController {
         resp.put("count", i);
         return resp;
     }
-
-    @Autowired private RedisService redisService;
 
     @PostMapping("/redisDemo")
     public Object redisDemo(@RequestBody Map<String, Object> reqParam) {
@@ -53,6 +54,13 @@ public class DemoController {
             redisService.set(key, value);
         }
         return null;
+    }
+
+    @GetMapping("/threadDemo")
+    public Object threadDemo(@ModelAttribute("reqParam") ReqParam reqParam) throws InvocationTargetException, IllegalAccessException {
+        Map<String, Object> map = BeanUtils.convertBeanToMap(reqParam);
+        Map<String, Object> result = demoService.threadDemo(map);
+        return result;
     }
 
 }
