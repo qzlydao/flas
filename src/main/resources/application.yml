@@ -1,12 +1,14 @@
 spring:
   datasource:
-    url: jdbc:mysql://127.0.0.1:3306/flas
+    url: jdbc:mysql://192.168.1.2:3306/flas
     username: root
     password: 518518
   redis:
     database: 0
-    host:
-    password:
+    host: 192.168.1.6
+#    password: 518518
+    port: 6379
+    timeout: 10000
     jedis:
       pool:
         max-active: 8
