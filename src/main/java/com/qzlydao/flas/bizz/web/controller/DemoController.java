@@ -13,6 +13,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.ExecutionException;
 
 /**
  * Created with IntelliJ IDEA.
@@ -60,6 +61,12 @@ public class DemoController {
     public Object threadDemo(@ModelAttribute("reqParam") ReqParam reqParam) throws InvocationTargetException, IllegalAccessException {
         Map<String, Object> map = BeanUtils.convertBeanToMap(reqParam);
         Map<String, Object> result = demoService.threadDemo(map);
+        return result;
+    }
+
+    @GetMapping("/threadDemo2")
+    public Object threadDemo2(@RequestParam String param) throws ExecutionException, InterruptedException {
+        Object result = demoService.threadDemoWithResult(param);
         return result;
     }
 

@@ -21,5 +21,13 @@ public class Test1 {
 
     }
 
+    @Test
+    public void test() throws Exception {
+
+        int i = Runtime.getRuntime().availableProcessors();
+
+    }
+
+
 
 }
