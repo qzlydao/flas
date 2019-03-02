@@ -2,6 +2,9 @@ package com.qzlydao.flas.otherTest;
 
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created with IntelliJ IDEA.
  * Description:
@@ -22,6 +25,21 @@ public class OtherTest {
         System.out.println(str3 == str4);
         System.out.println(str3.equals(str4));
 
+    }
+
+    @Test
+    public void testList() throws Exception {
+        List list1 = new ArrayList();
+        list1.add("1");
+
+        List list2 = list1;
+
+        System.out.println(list1);
+        System.out.println(list2);
+
+        list1.add("2");
+        System.out.println(list1);
+        System.out.println(list2);
     }
 
 }
