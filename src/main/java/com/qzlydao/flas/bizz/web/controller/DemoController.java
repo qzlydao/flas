@@ -69,7 +69,4 @@ public class DemoController {
         Object result = demoService.threadDemoWithResult(param);
         return result;
     }
-
-    // master
-
 }
