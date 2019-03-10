@@ -41,6 +41,10 @@ dependencies {
 
     // fastjson
     compile 'com.alibaba:fastjson:1.2.47'
+    
+    // 
+    compile group: 'commons-beanutils', name: 'commons-beanutils', version: '1.9.3'
+
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
