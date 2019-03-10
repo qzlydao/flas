@@ -3,7 +3,7 @@
 <mapper namespace="com.qzlydao.flas.bizz.dao.MatchDao">
 
 	<select id="queryCount" resultType="int">
-		select count(id) from `match`
+		select count(*) from match
 	</select>
 
 </mapper>

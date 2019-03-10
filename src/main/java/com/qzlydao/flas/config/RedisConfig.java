@@ -18,6 +18,8 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 @Configuration
 @EnableCaching
 public class RedisConfig {
+    
+    // 测试
 
     @Bean
     public RedisTemplate<String, Object> redisTemplate(RedisConnectionFactory factory) {
