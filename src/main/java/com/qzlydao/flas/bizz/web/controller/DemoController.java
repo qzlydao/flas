@@ -25,7 +25,7 @@ import java.util.concurrent.ExecutionException;
 @RestController
 public class DemoController {
 
-    @Autowired         DemoService  demoService;
+    @Autowired private DemoService  demoService;
     @Autowired private MatchDao     matchDao;
     @Autowired private RedisService redisService;
 
